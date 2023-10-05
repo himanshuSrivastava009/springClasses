@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context" xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"> <!-- bean definitions here -->
+
+<bean id="bmw" class="SpringClasses.SpringClasses.BMW">
+<constructor-arg ref ="rocketEngine"></constructor-arg>
+ </bean>
+<bean id="nano" class="SpringClasses.SpringClasses.NANO"> 
+<constructor-arg ref ="rocketEngine"></constructor-arg>
+</bean>
+
+<bean id="rocketEngine" class="SpringClasses.SpringClasses.RocketEngine"></bean>
+<context:property-placeholder location="classpath:car.properties"/>
+<bean id="audi" class="SpringClasses.SpringClasses.Audi">
+<property name="rocketEngine" ref="rocketEngine"></property>
+<property name="color" value="${color}"></property>
+<property name="price" value="${price}"></property>
+</bean>
+</beans>
